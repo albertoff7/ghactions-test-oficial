@@ -8,14 +8,14 @@ jobs:
   official_cherry_pick_and_pull_request:
     runs-on: ubuntu-latest
     name: official_cherry_pick_and_pull_request
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'tag1') && github.event.pull_request.merged == true }}
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'cherry') && github.event.pull_request.merged == true }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Cherry pick into release
-        uses: carloscastrojumo/github-cherry-pick-action@v1.0.1
+        uses: carloscastrojumo/github-cherry-pick-action@v1.0.10
         with:
           branch: release
           labels: cherry-pick
