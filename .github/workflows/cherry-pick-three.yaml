@@ -8,7 +8,7 @@ jobs:
   official_cherry_pick_and_pull_request:
     runs-on: ubuntu-latest
     name: official_cherry_pick_and_pull_request
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'dev') && github.event.pull_request.merged == true }}
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'tag1') && github.event.pull_request.merged == true }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
