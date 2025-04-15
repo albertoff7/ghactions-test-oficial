@@ -19,7 +19,7 @@ jobs:
         with:
           branch: release
           labels: cherry
-          title: '[BMES-DATA][cherry-pick-to-release] {old_title} {{commitSha}}'
+          title: '[AUTO][release][cherry-pick] {old_title} {commitSha}'
           body: 'Cherry picking #{old_pull_request_id} onto this branch'
           reviewers: albertoff7
       - name: Cherry pick into master
@@ -27,7 +27,7 @@ jobs:
         with:
           branch: master
           labels: cherry
-          title: '[BMES-DATA][cherry-pick-to-master] {old_title} {{commitSha}}'
+          title: '[AUTO][master][cherry-pick] {old_title} ${GITHUB_SHA}'
           body: 'Cherry picking #{old_pull_request_id} onto this branch'
           reviewers: albertoff7
 env:
