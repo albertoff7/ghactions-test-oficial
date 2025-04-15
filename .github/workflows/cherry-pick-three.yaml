@@ -18,7 +18,7 @@ jobs:
         uses: carloscastrojumo/github-cherry-pick-action@v1.0.10
         with:
           branch: release
-          labels: cherry-pick
+          labels: cherry
           title: '[cherry-pick] {old_title}'
           body: 'Cherry picking #{old_pull_request_id} onto this branch'
           #reviewers: aReviewerUser
