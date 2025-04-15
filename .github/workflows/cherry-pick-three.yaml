@@ -1,0 +1,26 @@
+name: Automate cherry-pick process with official GHA
+on:
+  pull_request:
+    branches:
+      - dev
+    types: ['closed']
+jobs:
+  official_cherry_pick_and_pull_request:
+    runs-on: ubuntu-latest
+    name: official_cherry_pick_and_pull_request
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'dev') && github.event.pull_request.merged == true }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Cherry pick into release
+        uses: carloscastrojumo/github-cherry-pick-action@v1.0.1
+        with:
+          branch: release
+          labels: cherry-pick
+          title: '[cherry-pick] {old_title}'
+          body: 'Cherry picking #{old_pull_request_id} onto this branch'
+          #reviewers: aReviewerUser
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
