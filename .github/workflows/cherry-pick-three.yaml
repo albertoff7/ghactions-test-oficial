@@ -19,16 +19,16 @@ jobs:
         with:
           branch: release
           labels: cherry
-          title: '[AUTO][release][cherry-pick] {old_title} {commitSha}'
-          body: 'Cherry picking #{old_pull_request_id} onto this branch'
+          title: '[AUTO][release][cherry-pick] {old_title}'
+          body: 'Cherry picking #{old_pull_request_id} onto release branch'
           reviewers: albertoff7
       - name: Cherry pick into master
         uses: carloscastrojumo/github-cherry-pick-action@v1.0.10
         with:
           branch: master
           labels: cherry
-          title: '[AUTO][master][cherry-pick] {old_title} ${GITHUB_SHA}'
-          body: 'Cherry picking #{old_pull_request_id} onto this branch'
+          title: '[AUTO][master][cherry-pick] {old_title}'
+          body: 'Cherry picking #{old_pull_request_id} onto master branch'
           reviewers: albertoff7
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
